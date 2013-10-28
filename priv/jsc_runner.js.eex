@@ -1,0 +1,19 @@
+(function(program, execJS) { execJS(program); })(function() {
+  return eval("<%= source %>");
+}, function(program) {
+  var result;
+  try {
+    result = program();
+    if (typeof result === 'undefined' && result !== null) {
+      print('["ok"]');
+    } else {
+      try {
+        print(JSON.stringify(['ok', result]));
+      } catch (err) {
+        print('["err"]');
+      }
+    }
+  } catch (err) {
+    print(JSON.stringify(['err', '' + err]));
+  }
+});
