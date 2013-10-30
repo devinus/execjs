@@ -3,19 +3,13 @@ defmodule Execjs do
 
   def eval(string) do
     runtime = Execjs.Runtimes.best_available
-    program = runtime.template(encode(string))
+    program = runtime.template(escape(string))
     command = runtime.command |> System.find_executable
 
     port = Port.open({ :spawn_executable, command },
       [:binary, :eof, :hide, { :args, ["-e", program] }])
 
     loop(port)
-  end
-
-  defp encode(string) do
-    string = :binary.replace(string, <<?\\>>, <<?\\, ?\\>>, [:global])
-    string = :binary.replace(string, <<?">>, <<?\\, ?">>, [:global])
-    String.replace(string, "\n", "\\n")
   end
 
   defp loop(port) do
@@ -32,6 +26,40 @@ defmodule Execjs do
     end
   end
 
+  defp escape(string) do
+    iolist_to_binary(escape(string, ""))
+  end
+
+  escape_map = [
+    { ?\\, "\\\\" },
+    { ?",  "\\\"" },
+    { ?\n, "\\n"  },
+    { ?\r, "\\r"  },
+    { "\x{2028}", "\\u2028" },
+    { "\x{2029}", "\\u2029" }
+  ]
+
+  lc { char, escaped } inlist escape_map do
+    defp escape(<< unquote(char), rest :: binary >>, acc) do
+      escape(rest, [acc, unquote(escaped)])
+    end
+  end
+
+  defp escape(<< char :: utf8, rest :: binary >>, acc) do
+    escape(rest, [acc, char])
+  end
+
+  defp escape(<<>>, acc) do
+    acc
+  end
+end
+
+defexception Execjs.RuntimeError, message: nil
+
+defexception Execjs.RuntimeUnavailable,
+  message: "Could not find a JavaScript runtime"
+
+defmodule Execjs.Runtime do
   app = Mix.project[:app]
 
   def runner_path(runner) do
@@ -47,7 +75,7 @@ defmodule Execjs do
 
         def available?, do: !!System.find_executable(command)
 
-        runner_path = Execjs.runner_path(unquote(options[:runner]))
+        runner_path = Execjs.Runtime.runner_path(unquote(options[:runner]))
         EEx.function_from_file :def, :template, runner_path, [:source]
       end
 
@@ -56,13 +84,8 @@ defmodule Execjs do
   end
 end
 
-defexception Execjs.RuntimeError, message: nil
-
-defexception Execjs.RuntimeUnavailable,
-  message: "Could not find a JavaScript runtime"
-
 defmodule Execjs.Runtimes do
-  import Execjs
+  import Execjs.Runtime
 
   Module.register_attribute __MODULE__, :runtimes, accumulate: true
 
