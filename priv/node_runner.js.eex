@@ -4,16 +4,16 @@
   var result;
   try {
     result = program();
-    if (reult === undefined) {
-      print('["ok"]');
+    if (result === undefined) {
+      process.stdout.write('["ok"]');
     } else {
       try {
-        print(JSON.stringify(['ok', result]));
+        process.stdout.write(JSON.stringify(['ok', result]));
       } catch (err) {
-        print('["err"]');
+        process.stdout.write('["err"]');
       }
     }
   } catch (err) {
-    print(JSON.stringify(['err', '' + err]));
+    process.stdout.write(JSON.stringify(['err', '' + err]));
   }
 });
