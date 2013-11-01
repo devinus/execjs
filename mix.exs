@@ -1,9 +1,11 @@
 defmodule Execjs.Mixfile do
   use Mix.Project
 
+  @version String.strip(File.read!("VERSION"))
+
   def project do
     [ app: :execjs,
-      version: "0.0.1",
+      version: @version,
       elixir: "~> 0.10.3",
       deps: deps(Mix.env) ]
   end
