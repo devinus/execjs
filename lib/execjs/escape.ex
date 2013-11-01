@@ -1,11 +1,8 @@
 defmodule Execjs.Escape do
   @compile :native
 
-  def escape(""), do: ""
-
-  def escape(string) do
-    iolist_to_binary(escape(string, ""))
-  end
+  def escape(""),     do: ""
+  def escape(string), do: escape(string, "")
 
   escape_map = [
     { ?\\, "\\\\" },
@@ -19,12 +16,12 @@ defmodule Execjs.Escape do
 
   lc { char, escaped } inlist escape_map do
     defp escape(<< unquote(char), rest :: binary >>, acc) do
-      escape(rest, [acc, unquote(escaped)])
+      escape(rest, << acc :: binary, unquote(escaped) >>)
     end
   end
 
   defp escape(<< char :: utf8, rest :: binary >>, acc) do
-    escape(rest, [acc, char])
+    escape(rest, << acc :: binary, char :: utf8 >>)
   end
 
   defp escape(<<>>, acc) do

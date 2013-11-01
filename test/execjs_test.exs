@@ -2,14 +2,17 @@ defmodule ExecjsTest do
   use ExUnit.Case
 
   test "eval" do
-    # assert Execjs.eval("(function() { return 1 + 1; })();") == ["ok", 2]
+    assert Execjs.eval("1 + 1") == 2
+    assert Execjs.eval(%s{var a = "a"; a + "b"}) == "ab"
+  end
 
+  test "call" do
     context = Execjs.compile(%S""")
-function addOne(n) {
-  return n + 1;
-}
-"""
+    function addOne(n) {
+      return n + 1;
+    }
+    """
 
-    IO.inspect Execjs.call(context, "addOne", [3])
+    assert Execjs.call(context, "addOne", [3]) == 4
   end
 end

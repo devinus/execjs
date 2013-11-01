@@ -8,12 +8,12 @@
       if (result === undefined) {
         process.stdout.write('["ok"]');
       } else {
-        process.stdout.write(JSON.stringify(['ok', result]));
+        java.lang.System.out.println(JSON.stringify(['ok', result]));
       }
     } catch (err) {
-      process.stdout.write('["err"]');
+      java.lang.System.out.println('["err"]');
     }
   } catch (err) {
-    process.stdout.write(JSON.stringify(['err', '' + err]));
+    java.lang.System.out.println(JSON.stringify(['err', '' + err]));
   }
 });
