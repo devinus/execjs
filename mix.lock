@@ -1,1 +1,1 @@
-[ "jazz": {:git, "git://github.com/meh/jazz.git", "efac8600723bdf338a356e5671007aa54a55f327", []} ]
+[ "jazz": {:git, "git://github.com/meh/jazz.git", "5b3fd0e3efd2c8445289bdbda2f93bb0d96ad169", [{:tag, "v0.0.1"}]} ]
