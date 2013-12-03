@@ -20,7 +20,7 @@ defmodule Execjs do
 
   @spec call((String.t -> String.t), String.t, list(any)) :: any
   def call(context, identifier, args) when is_binary(identifier) and is_list(args) do
-    source = "return #{identifier}.apply(this, #{JSON.encode!(args)})"
+    source = "return #{identifier}.apply(this, #{JSON.encode!(args, mode: :javascript)})"
     exec context.(source)
   end
 
