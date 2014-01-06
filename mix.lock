@@ -1,2 +1,1 @@
-[ "benchmark": {:git, "git://github.com/meh/elixir-benchmark.git", "d5e15aabff417f1ffc9ecf8e5966f5c338b10c1e", []},
-  "jazz": {:git, "git://github.com/meh/jazz.git", "daa9bd04aed744efc51a048fd7527c4733832ad9", []} ]
+[ "jazz": {:git, "git://github.com/meh/jazz.git", "4756dda14295116dd5a790ea3030b5c3b1181859", []} ]

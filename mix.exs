@@ -6,7 +6,7 @@ defmodule Execjs.Mixfile do
   def project do
     [ app: :execjs,
       version: @version,
-      elixir: ">= 0.11.0",
+      elixir: "~> 0.12.0",
       deps: deps ]
   end
 

@@ -32,7 +32,7 @@ defmodule Execjs do
 
     try do
       port = Port.open({ :spawn_executable, command },
-        [:binary, :eof, :hide, { :args, [tmpfile] }])
+        [:stream, :in, :binary, :eof, :hide, { :args, [tmpfile] }])
 
       extract_result(loop(port))
     after
