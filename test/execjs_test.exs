@@ -7,7 +7,7 @@ defmodule ExecjsTest do
   end
 
   test "call" do
-    context = Execjs.compile(%S""")
+    context = Execjs.compile ~S"""
     function addOne(n) {
       return n + 1;
     }

@@ -7,7 +7,7 @@ defmodule Execjs do
 
   @spec eval(String.t) :: any
   def eval(source) when is_binary(source) do
-    exec %s[eval("#{escape(source)}")]
+    exec ~s[eval("#{escape(source)}")]
   end
 
   @spec compile(String.t) :: (String.t -> String.t)
@@ -49,7 +49,7 @@ defmodule Execjs do
       { ^port, { :data, data } } ->
         loop(port, acc <> data)
       { ^port, :eof } ->
-        port <- { self, :close }
+        send port, { self, :close }
         acc
     end
   end
