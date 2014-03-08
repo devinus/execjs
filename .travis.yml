@@ -9,6 +9,7 @@ before_install:
   - make -C elixir
 before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
+  - mix deps.get
 script:
   - mix test
 env:
