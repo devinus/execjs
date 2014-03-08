@@ -6,7 +6,7 @@
     result = program();
     try {
       if (result === undefined) {
-        process.stdout.write('["ok"]');
+        java.lang.System.out.println('["ok"]');
       } else {
         java.lang.System.out.println(JSON.stringify(['ok', result]));
       }
