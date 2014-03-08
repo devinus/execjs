@@ -37,3 +37,7 @@ iex> context = Execjs.compile(source)
 iex> Execjs.call(context, "CoffeeScript.compile", ["square = (x) -> x * x"])
 "(function() {\n  var square;\n\n  square = function(x) {\n    return x * x;\n  };\n\n}).call(this);\n"
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/devinus/execjs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
