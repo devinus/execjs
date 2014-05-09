@@ -1,11 +1,10 @@
 language: erlang
 otp_release:
-  - 17.0-rc1
-  - R16B03-1
+  - 17.0
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq rhino
-  - git clone -b v0.12.4 --depth 1 git://github.com/elixir-lang/elixir
+  - git clone -b v0.13.1 --depth 1 git://github.com/elixir-lang/elixir
   - make -C elixir
 before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
