@@ -20,7 +20,7 @@ defmodule Execjs do
 
   @spec call((String.t -> String.t), String.t, list(any)) :: any
   def call(context, identifier, args) when is_binary(identifier) and is_list(args) do
-    source = "return #{identifier}.apply(this, #{JSON.encode!(args, mode: :javascript)})"
+    source = "return #{identifier}.apply(this, #{Jazz.encode!(args, mode: :javascript)})"
     exec context.(source)
   end
 
@@ -63,7 +63,7 @@ defmodule Execjs do
   end
 
   defp extract_result(output) do
-    case JSON.decode!(output) do
+    case Jazz.decode!(output) do
       [ "ok", value ] ->
         value
       [ "ok" ] ->
