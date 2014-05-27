@@ -1,9 +1,12 @@
 defmodule Execjs do
   import Execjs.Escape, only: [escape: 1]
 
-  defexception Error, message: nil
-  defexception RuntimeError, message: nil
-  defexception RuntimeUnavailable, message: "Could not find JavaScript runtime"
+  defmodule Error, do: defexception [:message]
+  defmodule RuntimeError, do: defexception [:message]
+
+  defmodule RuntimeUnavailable do
+    defexception message: "Could not find JavaScript runtime"
+  end
 
   @spec eval(String.t) :: any
   def eval(source) when is_binary(source) do
@@ -69,9 +72,9 @@ defmodule Execjs do
       [ "ok" ] ->
         :undefined
       [ "err", message ] ->
-        raise Execjs.RuntimeError, message: message
+        raise %RuntimeError{message: message}
       [ "err" ] ->
-        raise Execjs.Error
+        raise %Error{}
     end
   end
 end

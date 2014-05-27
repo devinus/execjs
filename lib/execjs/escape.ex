@@ -14,7 +14,7 @@ defmodule Execjs.Escape do
     { "\x{2029}", "\\u2029" }
   ]
 
-  lc { char, escaped } inlist escape_map do
+  for { char, escaped } <- escape_map do
     defp escape(<< unquote(char), rest :: binary >>, acc) do
       escape(rest, << acc :: binary, unquote(escaped) >>)
     end

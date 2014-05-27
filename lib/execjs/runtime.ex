@@ -1,5 +1,5 @@
 defmodule Execjs.Runtime do
-  app = Mix.project[:app]
+  app = Mix.Project.config[:app]
 
   def runner_path(runner) do
     Path.join([:code.priv_dir(unquote(app)), runner])

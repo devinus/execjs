@@ -6,7 +6,7 @@ defmodule Execjs.Mixfile do
   def project do
     [ app: :execjs,
       version: @version,
-      elixir: "~> 0.13.1",
+      elixir: "~> 0.13.3",
       deps: deps ]
   end
 
@@ -18,6 +18,6 @@ defmodule Execjs.Mixfile do
   # Returns the list of dependencies in the format:
   # { :foobar, "~> 0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
-    [ { :jazz, "~> 0.1.0" } ]
+    [ { :jazz, github: "meh/jazz" } ]
   end
 end
