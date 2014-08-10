@@ -4,10 +4,11 @@ otp_release:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq rhino
-  - git clone -b v0.15.0 --depth 1 git://github.com/elixir-lang/elixir
-  - make -C elixir
+  - wget https://github.com/elixir-lang/elixir/releases/download/v0.15.0/Precompiled.zip
+  - unzip -d elixir Precompiled.zip
 before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
+  - mix local.hex --force
   - MIX_ENV=test mix deps.get
 script:
   - mix test
