@@ -32,7 +32,7 @@ iex> Execjs.eval "'red yellow blue'.split(' ')"
 ### `compile`/`call`
 
 ```iex
-iex> source = System.cmd("curl -sL http://jashkenas.github.com/coffee-script/extras/coffee-script.js")
+iex> source = System.cmd("curl -sL --compressed https://rawgit.com/jashkenas/coffeescript/master/extras/coffee-script.js")
 iex> context = Execjs.compile(source)
 iex> Execjs.call(context, "CoffeeScript.compile", ["square = (x) -> x * x"])
 "(function() {\n  var square;\n\n  square = function(x) {\n    return x * x;\n  };\n\n}).call(this);\n"
@@ -40,4 +40,3 @@ iex> Execjs.call(context, "CoffeeScript.compile", ["square = (x) -> x * x"])
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/devinus/execjs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
