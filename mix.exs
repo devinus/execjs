@@ -7,6 +7,7 @@ defmodule Execjs.Mixfile do
     [app: :execjs,
      version: @version,
      elixir: "~> 0.15.0",
+     description: "Run JavaScript code from Elixir",
      deps: deps,
      package: package]
   end
