@@ -1,8 +1,8 @@
 # Execjs
 
-[![Build Status](https://secure.travis-ci.org/devinus/execjs.png?branch=master)](http://travis-ci.org/devinus/execjs)
+[![Build Status](https://api.travis-ci.org/devinus/execjs.svg?branch=master)](https://travis-ci.org/devinus/execjs)
 
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.1/dist/gittip.png)](https://www.gittip.com/devinus/)
+[![Support via Gratipay](https://raw.githubusercontent.com/twolfson/gittip-badge/0.2.1/dist/gittip.png)](https://gratipay.com/devinus/)
 
 `Execjs` allows you run JavaScript from Elixir. It can automatically pick the
 best runtime available on the system.
