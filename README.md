@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/devinus/execjs.svg?branch=master)](https://travis-ci.org/devinus/execjs)
 
-[![Support via Gratipay](https://raw.githubusercontent.com/twolfson/gittip-badge/0.2.1/dist/gittip.png)](https://gratipay.com/devinus/)
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/devinus/)
 
 `Execjs` allows you run JavaScript from Elixir. It can automatically pick the
 best runtime available on the system.
