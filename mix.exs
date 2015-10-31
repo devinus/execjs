@@ -6,7 +6,7 @@ defmodule Execjs.Mixfile do
   def project do
     [app: :execjs,
      version: @version,
-     elixir: "~> 1.0.0-rc1",
+     elixir: "~> 1.0",
      description: "Run JavaScript code from Elixir",
      deps: deps,
      package: package]
@@ -29,7 +29,7 @@ defmodule Execjs.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:poison, "~> 1.1.0"}]
+    [{:poison, "~> 1.5"}]
   end
 
   defp package do
