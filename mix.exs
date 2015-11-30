@@ -33,7 +33,7 @@ defmodule Execjs.Mixfile do
   end
 
   defp package do
-    [files: ~w(lib priv mix.exs README.md UNLICENSE),
+    [files: ~w(lib priv mix.exs README.md UNLICENSE VERSION),
      maintainers: ["Devin Torres"],
      licenses: ["Unlicense"],
      links: %{"GitHub" => "https://github.com/devinus/execjs"}]
