@@ -1,14 +1,20 @@
 language: elixir
-elixir: 1.0.1
+elixir:
+  - 1.2.0
+  - 1.1.1
+  - 1.1.0
+  - 1.0.5
+  - 1.0.4
 otp_release:
+  - 18.2
+  - 18.1
+  - 18.0
+  - 17.5
+  - 17.4
   - 17.3
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq rhino
-before_script:
-  - MIX_ENV=test mix deps.get
-script:
-  - mix test
 env:
   - EXECJS_RUNTIME=Node
   - EXECJS_RUNTIME=Rhino
