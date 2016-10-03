@@ -53,6 +53,7 @@ defmodule Execjs do
         loop(port, acc <> data)
       { ^port, :eof } ->
         send port, { self, :close }
+        receive do: ({ ^port, :closed } -> :ok)
         acc
     end
   end
