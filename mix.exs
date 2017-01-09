@@ -8,8 +8,8 @@ defmodule Execjs.Mixfile do
      version: @version,
      elixir: "~> 1.0",
      description: "Run JavaScript code from Elixir",
-     deps: deps,
-     package: package]
+     deps: deps(),
+     package: package()]
   end
 
   # Configuration for the OTP application
