@@ -8,8 +8,8 @@ defmodule Execjs.Mixfile do
      version: @version,
      elixir: "~> 1.0",
      description: "Run JavaScript code from Elixir",
-     deps: deps,
-     package: package]
+     deps: deps(),
+     package: package()]
   end
 
   # Configuration for the OTP application
@@ -29,7 +29,7 @@ defmodule Execjs.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:poison, "~> 1.5"}]
+    [{:poison, "~> 3.1"}]
   end
 
   defp package do

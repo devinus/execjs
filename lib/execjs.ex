@@ -52,14 +52,14 @@ defmodule Execjs do
       { ^port, { :data, data } } ->
         loop(port, acc <> data)
       { ^port, :eof } ->
-        send port, { self, :close }
+        send port, { self(), :close }
         receive do: ({ ^port, :closed } -> :ok)
         acc
     end
   end
 
   defp compile_to_tempfile(program) do
-    hash = :erlang.phash2(:crypto.rand_bytes(8))
+    hash = :erlang.phash2(:crypto.strong_rand_bytes(8))
     filename = "execjs-#{hash}.js"
     path = Path.join(System.tmp_dir!, filename)
     File.write! path, program

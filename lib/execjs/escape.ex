@@ -10,8 +10,8 @@ defmodule Execjs.Escape do
     { ?\n, "\\n"  },
     { ?\r, "\\r"  },
     # http://bclary.com/2004/11/07/#a-7.3
-    { "\x{2028}", "\\u2028" },
-    { "\x{2029}", "\\u2029" }
+    { "\u2028", "\\u2028" },
+    { "\u2029", "\\u2029" }
   ]
 
   for { char, escaped } <- escape_map do

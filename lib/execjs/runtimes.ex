@@ -32,7 +32,7 @@ defmodule Execjs.Runtimes do
       :undefined ->
         runtime = case System.get_env("EXECJS_RUNTIME") do
           nil ->
-            Enum.find(runtimes, &(&1.available?)) || raise RuntimeUnavailable
+            Enum.find(runtimes(), &(&1.available?)) || raise RuntimeUnavailable
           name ->
             runtime = Module.concat(__MODULE__, name)
             Code.ensure_loaded?(runtime)

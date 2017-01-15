@@ -12,7 +12,7 @@ defmodule Execjs.Runtime do
 
         def command, do: unquote(options[:command])
 
-        def available?, do: !!System.find_executable(command)
+        def available?, do: !!System.find_executable(command())
 
         runner_path = Execjs.Runtime.runner_path(unquote(options[:runner]))
         EEx.function_from_file :def, :template, runner_path, [:source]

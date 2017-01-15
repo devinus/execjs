@@ -7,7 +7,7 @@ defmodule ExecjsTest do
 
   test "eval" do
     assert eval(~s(var a = "a"; a + "b")) == "ab"
-    assert eval(~s(\x{2028}\nvar str = "foo";\x{2029}\n))
+    assert eval(~s(\u2028\nvar str = "foo";\u2029\n))
 
     assert_raise RuntimeError, fn ->
       eval("xxx")
