@@ -75,7 +75,7 @@ defmodule Execjs do
       [ "err", message ] ->
         raise %RuntimeError{message: message}
       [ "err" ] ->
-        raise %Error{}
+        raise %Error{message: "Unknown error"}
     end
   end
 end
