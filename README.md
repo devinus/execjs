@@ -25,7 +25,7 @@ It is possible to define a custom runtime to specify an exact path
 to your runtime command:
 
 ```elixir
-defmodule ServeElmWeb.Runtime do
+defmodule MyModule.Runtime do
 	import Execjs.Runtime
 
 	defruntime Node8,
