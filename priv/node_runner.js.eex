@@ -1,19 +1,24 @@
-(function(program, runner) { runner(program); })(function() {
-  return <%= source %>;
-}, function(program) {
-  var result;
-  try {
-    result = program();
-    try {
-      if (result === undefined) {
-        process.stdout.write('["ok"]');
-      } else {
-        process.stdout.write(JSON.stringify(['ok', result]));
-      }
-    } catch (err) {
-      process.stdout.write('["err"]');
+const fs = require('fs');
+(function(program, runner) {
+    runner(program);
+})(
+    function() {
+        return <%= source %>;
     }
-  } catch (err) {
-    process.stdout.write(JSON.stringify(['err', '' + err]));
-  }
-});
+    , async function(program) {
+        let result;
+        try {
+            result = await program();
+            try {
+                if (result === undefined) {
+                    fs.writeSync(4,'["ok"]');
+                } else {
+                    fs.writeSync(4,JSON.stringify(['ok', result]));
+                }
+            } catch (err) {
+               fs.writeSync(4, '["err"]');
+            }
+        } catch (err) {
+            fs.writeSync(4,JSON.stringify(['err', '' + err]));
+        }
+    });
