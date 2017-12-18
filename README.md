@@ -19,6 +19,23 @@ best runtime available on the system.
 Use the application environment (application key: `:execjs`, key: `:runtime`)
 to set the runtime `Execjs` uses. Alternatively, the `EXECJS_RUNTIME`
 environment variable can also be used to set the runtime.
+### Additional Runtimes
+
+It is possible to define a custom runtime to specify an exact path
+to your runtime command:
+
+```elixir
+defmodule ServeElmWeb.Runtime do
+	import Execjs.Runtime
+
+	defruntime Node8,
+    		command: "/Users/o_o/.nvm/versions/node/v8.9.3/bin/node",
+		runner: "node_runner.js.eex"
+end
+
+```
+
+
 
 ## Usage
 
