@@ -1,6 +1,6 @@
-(function(program, runner) { runner(program); })(function() {
+(function(program, runner) { runner(program); })(function(PerfMeasurement,version,revertVersion,options,load,evaluate,run,readline,print,putstr,dateNow,help,quit,assertEq,assertJit,gc,gcparam,countHeap,makeFinalizeObserver,finalizeCount,setDebug,setDebuggerHandler,setThrowHook,trap,untrap,line2pc,pc2line,stackQuota,stringsAreUTF8,testUTF8,throwError,build,clear,intern,clone,getpda,getslx,toint32,evalcx,evalInFrame,shapeOf,resolver,sleep,scatter,snarf,read,compile,parse,timeout,elapsed,parent,wrap,serialize,deserialize,mjitstats,stringstats,newGlobal,it,custom,customRdOnly,environment,Worker) {
   return <%= source %>;
-}, function(program) {
+}, function(program, undefined) {
   var result;
   try {
     result = program();
@@ -14,6 +14,6 @@
       print('["err"]');
     }
   } catch (err) {
-    print(JSON.stringify(['err', '' + err]));
+    print(JSON.stringify(['err', '' + err, err.stack]));
   }
 });

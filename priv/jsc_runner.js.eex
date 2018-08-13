@@ -1,6 +1,6 @@
-(function(program, runner) { runner(program); })(function() {
+(function(program, runner) { runner(program); })(function(debug,describe,describeArray,print,printErr,quit,gc,fullGC,edenGC,forceGCSlowPaths,gcHeapSize,addressOf,version,run,runString,load,loadString,readFile,read,checkSyntax,sleepSeconds,jscStack,readline,preciseTime,neverInlineFunction,noInline,noDFG,noFTL,noOSRExitFuzzing,numberOfDFGCompiles,jscOptions,optimizeNextInvocation,reoptimizationRetryCount,transferArrayBuffer,failNextNewCodeBlock,DFGTrue,OSRExit,isFinalTier,predictInt32,isInt32,fiatInt52,effectful42,makeMasquerader,hasCustomProperties,createGlobalObject,dumpTypesForAllVariables,drainMicrotasks,getRandomSeed,setRandomSeed,isRope,callerSourceOrigin,is32BitPlatform,loadModule,checkModuleSyntax,platformSupportsSamplingProfiler,generateHeapSnapshot,resetSuperSamplerState,ensureArrayStorage,startSamplingProfiler,samplingProfilerStackTraces,maxArguments,asyncTestStart,asyncTestPassed,WebAssemblyMemoryMode,$,$262,waitForReport,heapCapacity,flashHeapAccess,disableRichSourceInfo,mallocInALoop) {
   return <%= source %>;
-}, function(program) {
+}, function(program, undefined) {
   var result;
   try {
     result = program();
@@ -14,6 +14,6 @@
       print('["err"]');
     }
   } catch (err) {
-    print(JSON.stringify(['err', '' + err]));
+    print(JSON.stringify(['err', '' + err, err.stack]));
   }
 });

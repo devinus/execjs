@@ -1,41 +1,45 @@
 defmodule Execjs.Mixfile do
   use Mix.Project
 
-  @version String.strip(File.read!("VERSION"))
+  @version_path Path.join([__DIR__, "VERSION"])
+  @external_resource @version_path
+
+  @version @version_path |> File.read!() |> String.trim()
 
   def project do
-    [app: :execjs,
-     version: @version,
-     elixir: "~> 1.0",
-     description: "Run JavaScript code from Elixir",
-     deps: deps(),
-     package: package()]
+    [
+      app: :execjs,
+      version: @version,
+      elixir: "~> 1.6",
+      start_permanent: Mix.env() == :prod,
+      description: "Run JavaScript code from Elixir",
+      deps: deps(),
+      package: package()
+    ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type `mix help compile.app` for more information
+  # Run "mix help compile.app" to learn about applications.
   def application do
-    [applications: []]
+    [
+      extra_applications: [:logger]
+    ]
   end
 
-  # Dependencies can be hex.pm packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1"}
-  #
-  # Type `mix help deps` for more examples and options
+  # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [{:poison, "~> 3.1"}]
+    [
+      {:poison, "~> 4.0"},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:dialyxir, "~> 0.5", only: :dev, runtime: false}
+    ]
   end
 
   defp package do
-    [files: ~w(lib priv mix.exs README.md UNLICENSE VERSION),
-     maintainers: ["Devin Torres"],
-     licenses: ["Unlicense"],
-     links: %{"GitHub" => "https://github.com/devinus/execjs"}]
+    [
+      files: ~w(lib priv mix.exs README.md LICENSE VERSION),
+      maintainers: ["Devin Alexander Torres"],
+      licenses: ["CC0-1.0"],
+      links: %{"GitHub" => "https://github.com/devinus/execjs"}
+    ]
   end
 end

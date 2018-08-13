@@ -1,6 +1,6 @@
-(function(program, runner) { runner(program); })(function() {
+(function(program, runner) { runner(program); })(function(Packages,getClass,JavaAdapter,JavaImporter,java,javax,org,com,edu,net,global,defineClass,deserialize,doctest,gc,help,load,loadClass,print,quit,readline,readFile,readUrl,runCommand,seal,serialize,spawn,sync,toint32,version,write,Environment,environment,history,arguments,i,importClass,importPackage) {
   return <%= source %>;
-}, function(program) {
+}, function(program, undefined) {
   var result;
   try {
     result = program();
@@ -14,6 +14,6 @@
       java.lang.System.out.println('["err"]');
     }
   } catch (err) {
-    java.lang.System.out.println(JSON.stringify(['err', '' + err]));
+    java.lang.System.out.println(JSON.stringify(['err', '' + err, err.stack]));
   }
 });

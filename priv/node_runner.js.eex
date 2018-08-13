@@ -1,6 +1,6 @@
-(function(program, runner) { runner(program); })(function() {
+(function(program, runner) { runner(program); })(function(console,DTRACE_NET_SERVER_CONNECTION,DTRACE_NET_STREAM_END,DTRACE_HTTP_SERVER_REQUEST,DTRACE_HTTP_SERVER_RESPONSE,DTRACE_HTTP_CLIENT_REQUEST,DTRACE_HTTP_CLIENT_RESPONSE,global,process,GLOBAL,root,Buffer,clearImmediate,clearInterval,clearTimeout,setImmediate,setInterval,setTimeout,module,require,assert,async_hooks,buffer,child_process,cluster,crypto,dgram,dns,domain,events,fs,http,https,net,os,path,perf_hooks,punycode,querystring,readline,repl,stream,string_decoder,tls,tty,url,util,v8,vm,zlib,http2) {
   return <%= source %>;
-}, function(program) {
+}, function(program, undefined) {
   var result;
   try {
     result = program();
@@ -14,6 +14,6 @@
       process.stdout.write('["err"]');
     }
   } catch (err) {
-    process.stdout.write(JSON.stringify(['err', '' + err]));
+    process.stdout.write(JSON.stringify(['err', '' + err, err.stack]));
   }
 });

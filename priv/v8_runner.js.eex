@@ -1,0 +1,19 @@
+(function(program, runner) { runner(program); })(function(print,write,read,readbuffer,readline,load,quit,version,Realm,os) {
+  return <%= source %>;
+}, function(program, undefined) {
+  var result;
+  try {
+    result = program();
+    try {
+      if (result === undefined) {
+        print('["ok"]');
+      } else {
+        print(JSON.stringify(['ok', result]));
+      }
+    } catch (err) {
+      print('["err"]');
+    }
+  } catch (err) {
+    print(JSON.stringify(['err', '' + err, err.stack]));
+  }
+});

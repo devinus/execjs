@@ -1,5 +1,5 @@
 defmodule ExecjsTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   import Execjs
 
@@ -15,11 +15,12 @@ defmodule ExecjsTest do
   end
 
   test "call" do
-    context = compile ~S"""
-    function addOne(n) {
-      return n + 1;
-    }
-    """
+    context =
+      compile(~S"""
+      function addOne(n) {
+        return n + 1;
+      }
+      """)
 
     assert call(context, "addOne", [3]) == 4
     assert call(context, "addOne", [-3]) == -2
